@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    int input[1500][1000];
+    int row, col;
+    cin >> row >> col;
+
+    for(int i = 0; i < row; i++) {
+	    for(int j = 0; j < col; j++) {
+	        cin >> input[i][j];
+	    }
+    }
+    spiralPrint(input, row, col);
+}
+
+
+void spiralPrint(int arr[][1000], int row, int col){
+	 
+    int T=0,L=0,R=col-1,B=row-1;
+    int dir=0;
+    while(T<=B && L<=R){
+        
+        if(dir==0){
+            for(int i=L;i<=R;i++){
+                cout<<arr[T][i]<<" ";
+            }
+            
+            T++;
+        }
+        else if(dir==1){
+            for(int i=T;i<=B;i++){
+                cout<<arr[i][R]<<" ";
+            }
+            
+            R--;
+        }
+        
+        else if(dir==2){
+            for(int i=R;i>=L;i--){
+                cout<<arr[B][i]<<" ";
+            }
+            B--;
+        }
+        
+        else if(dir==3){
+            for(int i=B;i>=T;i--){
+                cout<<arr[i][L]<<" ";
+            }
+            L++;
+        }
+        
+        dir=(dir+1)%4;
+    }
+
+}
+
