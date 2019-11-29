@@ -1,0 +1,73 @@
+
+import java.util.Scanner;
+
+public class Main {
+	static Scanner s = new Scanner(System.in);
+	
+	public static int[][] takeInput2D(){
+		int numRows = s.nextInt();
+		int numCols = s.nextInt();
+		int[][] input = new int[numRows][numCols];
+		for(int i = 0; i < numRows; i++){
+			for(int j = 0; j < numCols; j++){
+				input[i][j] = s.nextInt();
+			}
+		}
+		return input;
+	}
+	
+	public static void main(String[] args) {
+		int a[][] = takeInput2D();
+	 spiralPrint(a);
+	}
+}
+public class solution {
+
+	public static void spiralPrint(int matrix[][]){
+		// Write your code here
+        int row=matrix.length;
+        int col=matrix[0].length;
+        int top=0,bottom=row-1,left=0,right=col-1;
+        int div=0;
+        
+         while(top<=bottom && left<=right){
+            
+            if(div==0){
+               for(int j=top;j<=right;j++){            
+                System.out.print(matrix[left][j]+" "); 
+                 
+             }
+                //div++;
+                top++; 
+            }
+            else if(div==1){
+                for(int i=top;i<=bottom;i++){
+                System.out.print(matrix[i][right]+" ");
+               }
+                //div++;
+                right--;
+
+            }
+            
+            else if(div==2){
+                for(int i=right;i>=left;i--){
+                System.out.print(matrix[bottom][i]+" ");
+                }
+              //  div++;
+                bottom--;
+            }
+            else if(div==3){
+                for(int i=bottom;i>=top;i--){
+                System.out.print(matrix[i][left]+" ");
+                
+                }
+            //    div++;
+                left++;
+            }
+            
+            div=(div+1)%4;
+            
+        }
+    }
+	
+}
